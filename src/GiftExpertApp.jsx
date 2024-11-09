@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { AddCategory } from "./components/AddCategory";
-import { GifGrid } from "./components/GifGrid";
+import { AddCategory, GifGrid } from "./components";
 
 export const GiftExpertApp = () => {
-  const [categories, setCategories] = useState(["One Punch", "Samurai X"]);
+  const [categories, setCategories] = useState([]);
 
   const onAddCategory = (newCategory) => {
     if (categories.includes(newCategory)) return;
@@ -12,22 +11,15 @@ export const GiftExpertApp = () => {
 
   return (
     <>
-      <h1>Gift expert app</h1>
-
-      {/* Input */}
+      <h1>Gift Expert App</h1>
       <AddCategory onNewCategory={(value) => onAddCategory(value)} />
 
-        {
-        categories.map((category) => {
-          <GifGrid 
+      {categories.map((category) => (
+        <GifGrid 
           key={category}
           category={category}
-          />
-        })
-        }
-
-
-      {/* GifItem */}
+        />
+      ))}
     </>
   );
 };
